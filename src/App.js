@@ -1,7 +1,12 @@
+// App Styles
+import './assets/scss/styles.scss';
+
 const App = () => {
   return (
     <div>
-      <h1>ATCP - Application To Collect Pokemons</h1>
+      <h1 className='title'>
+        <span>ATCP - </span>Application To Collect Pokemons
+      </h1>
     </div>
   );
 };

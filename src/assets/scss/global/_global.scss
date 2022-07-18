@@ -1,0 +1,46 @@
+// Global Styles
+* {
+  box-sizing: border-box;
+  font-family: $font-family;
+}
+
+body {
+  background-color: $bg-primary;
+  margin: 0;
+  overflow-x: hidden;
+  padding: 0;
+}
+
+.title {
+  color: $title-color;
+  font-size: $font-size_title;
+  font-weight: $font-weight_title;
+  margin: 0;
+  text-align: center;
+
+  span {
+    color: $text-color;
+  }
+}
+
+.sub-title {
+  color: $title-color;
+  font-size: $font-size_sub-title;
+  font-weight: $font_weight_sub-title;
+  margin: 0;
+
+  span {
+    color: $text-color;
+  }
+}
+
+p {
+  color: $text-color;
+  font-size: $font-size_text;
+  font-weight: $font-weight_text;
+
+  span {
+    color: $title-color;
+    font-weight: $font-weight_sub-title;
+  }
+}
