@@ -1,0 +1,89 @@
+.navbar {
+  align-items: center;
+  background-color: transparent;
+  display: flex;
+  height: 80px;
+  justify-content: space-between;
+  left: 0;
+  position: fixed;
+  padding: 0 2rem;
+  top: 0;
+  transition: $transition;
+  width: 100vw;
+  z-index: 10;
+
+  &-logo {
+    height: 90%;
+    position: relative;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  &-menu {
+    align-items: center;
+    display: flex;
+    height: 90%;
+
+    &_item {
+      border-radius: 5px;
+      color: $text-color;
+      cursor: pointer;
+      font-size: $font-size_button;
+      font-weight: $font-weight_button;
+      text-decoration: none;
+      position: relative;
+      padding: 0.7rem 1rem;
+      transition: $transition;
+      z-index: 10;
+
+      &:first-child {
+        margin-right: 1rem;
+      }
+
+      &::before {
+        background-color: transparent;
+        border-radius: 5px;
+        content: '';
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        transition: $transition;
+        width: 100%;
+        z-index: -1;
+      }
+
+      &:hover {
+        color: $white-color;
+        opacity: 0.7;
+
+        &::before {
+          @include scale-in_XY;
+          background-color: $bg-red;
+        }
+      }
+
+      &.active {
+        color: $white-color;
+
+        &::before {
+          @include scale-in_XY;
+          background-color: $bg-red;
+        }
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &.scrolled {
+    background-color: rgba($bg-secondary, 0.7);
+    backdrop-filter: brightness(80%);
+    box-shadow: $bs-primary;
+    height: 60px;
+  }
+}
