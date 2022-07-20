@@ -1,4 +1,13 @@
+import { useForm } from '../../hooks/useForm';
+
 export const SignIn = () => {
+  const { formValues, handleInputChange } = useForm({
+    si_email: '',
+    si_password: '',
+  });
+
+  const { si_email, si_password } = formValues;
+
   return (
     <div className='sign-in'>
       <div className='sign-in_content'>
@@ -6,12 +15,12 @@ export const SignIn = () => {
 
         <form className='form'>
           <div className='form-group'>
-            <input type='email' name='sign-in_email' placeholder='Correo electrónico' />
-            <div className='messages-error'>Correo electrónico inválido</div>
+            <input type='email' name='si_email' placeholder='Correo electrónico' value={si_email} onChange={handleInputChange} />
+            {/* <div className='messages-error'>Correo electrónico inválido</div> */}
           </div>
           <div className='form-group'>
-            <input type='password' name='sign-in_password' placeholder='Contraseña' />
-            <div className='messages-error'>Correo electrónico inválido</div>
+            <input type='password' name='si_password' placeholder='Contraseña' value={si_password} onChange={handleInputChange} />
+            {/* <div className='messages-error'>Contraseña inválida</div> */}
           </div>
           <button className='btn-default'>Iniciar Sesión</button>
         </form>
