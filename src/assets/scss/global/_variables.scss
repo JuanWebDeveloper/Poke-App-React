@@ -16,7 +16,7 @@ $white-color: #f2f2f2;
 
 // Box Shadow
 $bs-primary: 5px 7px 10px rgba($text-color, 0.5);
-$bs-secondary: 5px 15px 15px rgba($text-color, 0.5);
+$bs-secondary: 5px 10px 10px rgba($text-color, 0.5);
 
 // Fonts
 $font-family: 'Poppins', sans-serif;
@@ -25,9 +25,9 @@ $font-size_sub-title: 1.9rem;
 $font-size_text: 1.1rem;
 $font-size_button: 1.25rem;
 $font-weight_title: 700;
-$font-weight_sub-title: 500;
+$font-weight_sub-title: 600;
 $font-weight_text: 400;
-$font-weight_button: 600;
+$font-weight_button: 500;
 
 // Transition
 $transition: all 0.3s cubic-bezier(0.17, 0.67, 0.8, 0.62);

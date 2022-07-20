@@ -44,3 +44,95 @@ p {
     font-weight: $font-weight_sub-title;
   }
 }
+
+.form {
+  margin-top: 1rem;
+  position: relative;
+  width: 100%;
+
+  &-group {
+    margin-bottom: 1rem;
+    position: relative;
+    width: 100%;
+
+    input {
+      background-color: rgba($bg-tertiary, 0.8);
+      backdrop-filter: brightness(80%);
+      border: none;
+      border-radius: 5px;
+      color: $text-color;
+      font-size: 1.1rem;
+      font-weight: 500;
+      padding: 0.6rem;
+      transition: $transition;
+      width: 100%;
+
+      &::placeholder {
+        color: #22222240;
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &:hover {
+        backdrop-filter: brightness(30%);
+      }
+    }
+
+    .messages-error {
+      background-color: $bg-red;
+      border-radius: 5px;
+      color: $white-color;
+      font-size: $font-size_button;
+      font-weight: $font-weight_button;
+      margin-top: 0.5rem;
+      position: relative;
+      padding: 0.5rem;
+      text-align: center;
+      width: 100%;
+    }
+  }
+
+  .btn-default {
+    background-color: $bg-blue;
+    float: right;
+
+    &:hover {
+      &::before {
+        background-color: lighten($bg-blue, 15);
+      }
+    }
+  }
+}
+
+.btn-default {
+  border: none;
+  border-radius: 5px;
+  color: $white-color;
+  cursor: pointer;
+  font-size: $font-size_button;
+  font-weight: $font-weight_button;
+  position: relative;
+  padding: 0.5rem 1.1rem;
+  transition: $transition;
+  z-index: 1;
+
+  &::before {
+    border-radius: 5px;
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: $transition;
+    width: 100%;
+    z-index: -1;
+  }
+
+  &:hover {
+    &::before {
+      @include scale-in_XY;
+    }
+  }
+}

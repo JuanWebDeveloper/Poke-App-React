@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import { PrivateRouter } from './PrivateRouter';
 import { PublicRouter } from './PublicRouter';
+import { AuthRouter } from './AuthRouter';
 
 import { Navbar } from '../components/navbar/Navbar';
 
@@ -17,7 +18,9 @@ export const AppRouter = () => {
           path='/auth/*'
           element={
             <PublicRouter sessionIsActive={sessionIsActive}>
-              <Navbar />
+              <Navbar>
+                <AuthRouter />
+              </Navbar>
             </PublicRouter>
           }
         />
