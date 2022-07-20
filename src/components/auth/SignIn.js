@@ -1,6 +1,13 @@
+import { useDispatch, useSelector } from 'react-redux';
+
 import { useForm } from '../../hooks/useForm';
+import { validateSignIn } from '../../helpers/validator';
+import { cleanUpErrors } from '../../actions/ui';
 
 export const SignIn = () => {
+  const dispatch = useDispatch();
+  const { errorMessage, withMistakes, validateField } = useSelector(({ ui }) => ui);
+
   const { formValues, handleInputChange } = useForm({
     si_email: '',
     si_password: '',
@@ -8,19 +15,50 @@ export const SignIn = () => {
 
   const { si_email, si_password } = formValues;
 
+  const handleFocus = ({ target }) => {
+    if (withMistakes && target.name === validateField) {
+      const messageError = target.parentNode.childNodes[1];
+      messageError.classList.add('hide');
+
+      setTimeout(() => dispatch(cleanUpErrors()), 300);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const validateData = validateSignIn(formValues, dispatch);
+    validateData && alert('Formulario correcto');
+  };
+
   return (
     <div className='sign-in'>
       <div className='sign-in_content'>
         <h1 className='title'>Iniciar Sesión</h1>
 
-        <form className='form'>
+        <form className='form' onSubmit={handleSubmit} autoComplete='off'>
           <div className='form-group'>
-            <input type='email' name='si_email' placeholder='Correo electrónico' value={si_email} onChange={handleInputChange} />
-            {/* <div className='messages-error'>Correo electrónico inválido</div> */}
+            <input
+              type='text'
+              name='si_email'
+              placeholder='Correo electrónico'
+              className={`${validateField === 'si_email' && 'is-invalid'}`}
+              value={si_email}
+              onChange={handleInputChange}
+              onFocus={handleFocus}
+            />
+            {withMistakes && validateField === 'si_email' && <div className='messages-error'>{errorMessage}</div>}
           </div>
           <div className='form-group'>
-            <input type='password' name='si_password' placeholder='Contraseña' value={si_password} onChange={handleInputChange} />
-            {/* <div className='messages-error'>Contraseña inválida</div> */}
+            <input
+              type='password'
+              name='si_password'
+              placeholder='Contraseña'
+              className={`${validateField === 'si_password' && 'is-invalid'}`}
+              value={si_password}
+              onChange={handleInputChange}
+              onFocus={handleFocus}
+            />
+            {withMistakes && validateField === 'si_password' && <div className='messages-error'>{errorMessage}</div>}
           </div>
           <button className='btn-default'>Iniciar Sesión</button>
         </form>

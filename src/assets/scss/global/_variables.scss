@@ -39,9 +39,22 @@ $transition: all 0.3s cubic-bezier(0.17, 0.67, 0.8, 0.62);
 
 @keyframes scale-in_XY {
   0% {
-    transform: scaleX(0.1) scaleY(0.1);
+    transform: scaleX(0) scaleY(0);
   }
   100% {
     transform: scaleX(1) scaleY(1);
+  }
+}
+
+@mixin scale-in_XY-reverse {
+  animation: scale-in_XY-reverse 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+@keyframes scale-in_XY-reverse {
+  0% {
+    transform: scaleX(1) scaleY(1);
+  }
+  100% {
+    transform: scaleX(0) scaleY(0);
   }
 }

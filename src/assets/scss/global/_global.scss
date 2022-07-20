@@ -63,6 +63,7 @@ p {
       color: $text-color;
       font-size: 1.1rem;
       font-weight: 500;
+      outline: 2px solid transparent;
       padding: 0.6rem;
       transition: $transition;
       width: 100%;
@@ -78,9 +79,14 @@ p {
       &:hover {
         backdrop-filter: brightness(30%);
       }
+
+      &.is-invalid {
+        outline: 2px solid $bg-red;
+      }
     }
 
     .messages-error {
+      @include scale-in_XY;
       background-color: $bg-red;
       border-radius: 5px;
       color: $white-color;
@@ -90,7 +96,14 @@ p {
       position: relative;
       padding: 0.5rem;
       text-align: center;
+      transition: $transition;
       width: 100%;
+
+      &.hide {
+        @include scale-in_XY-reverse;
+        margin-top: 0;
+        padding: 0;
+      }
     }
   }
 
