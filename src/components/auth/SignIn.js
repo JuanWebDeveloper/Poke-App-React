@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { useForm } from '../../hooks/useForm';
@@ -7,6 +8,10 @@ import { cleanUpErrors } from '../../actions/ui';
 export const SignIn = () => {
   const dispatch = useDispatch();
   const { errorMessage, withMistakes, validateField } = useSelector(({ ui }) => ui);
+
+  useEffect(() => {
+    dispatch(cleanUpErrors());
+  }, []);
 
   const { formValues, handleInputChange } = useForm({
     si_email: '',

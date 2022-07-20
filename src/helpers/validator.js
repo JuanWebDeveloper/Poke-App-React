@@ -2,7 +2,7 @@ import validator from 'validator';
 
 import { formsError, cleanUpErrors } from '../actions/ui';
 
-// Validate Form Sign In Fields.
+// Validate The Fields Of The Sign In Form.
 export const validateSignIn = (values = {}, dispatch) => {
   let validateData = false;
 
@@ -19,6 +19,43 @@ export const validateSignIn = (values = {}, dispatch) => {
     return validateData;
   } else if (si_password.trim().length < 6) {
     dispatch(formsError('La contraseña debe tener al menos 6 caracteres.', 'si_password'));
+    return validateData;
+  }
+
+  dispatch(cleanUpErrors());
+  validateData = true;
+  return validateData;
+};
+
+// Validate The Fields Of The Sign Up Form.
+export const validateSignUp = (values = {}, dispatch) => {
+  let validateData = false;
+
+  const { su_username, su_email, su_password, su_password_confirmation } = values;
+
+  if (validator.isEmpty(su_username)) {
+    dispatch(formsError('El nombre de usuario es requerido.', 'su_username'));
+    return validateData;
+  } else if (su_username.trim().length < 5) {
+    dispatch(formsError('El nombre de usuario debe tener al menos 5 caracteres.', 'su_username'));
+    return validateData;
+  } else if (validator.isEmpty(su_email)) {
+    dispatch(formsError('El correo es requerido.', 'su_email'));
+    return validateData;
+  } else if (!validator.isEmail(su_email)) {
+    dispatch(formsError('El correo no es válido.', 'su_email'));
+    return validateData;
+  } else if (validator.isEmpty(su_password)) {
+    dispatch(formsError('La contraseña es requerida.', 'su_password'));
+    return validateData;
+  } else if (su_password.trim().length < 6) {
+    dispatch(formsError('La contraseña debe tener al menos 6 caracteres.', 'su_password'));
+    return validateData;
+  } else if (validator.isEmpty(su_password_confirmation)) {
+    dispatch(formsError('La confirmación de la contraseña es requerida.', 'su_password_confirmation'));
+    return validateData;
+  } else if (!validator.equals(su_password, su_password_confirmation)) {
+    dispatch(formsError('Las contraseñas no coinciden.', 'su_password_confirmation'));
     return validateData;
   }
 
