@@ -14,6 +14,7 @@ import { AuthRouter } from './AuthRouter';
 
 // Components.
 import { Navbar } from '../components/navbar/Navbar';
+import { Loading } from '../components/loading/Loading';
 
 export const AppRouter = () => {
   const dispatch = useDispatch();
@@ -35,33 +36,31 @@ export const AppRouter = () => {
   }, [dispatch]);
 
   if (sessionVerification) {
-    return <div>Cargando...</div>;
+    return <Loading />;
   }
 
   return (
     <Router>
-      <Routes>
-        <Route
-          path='/dashboard/*'
-          element={
-            <PrivateRouter sessionIsActive={sessionIsActive}>
-              <Navbar>
+      <Navbar>
+        <Routes>
+          <Route
+            path='/dashboard/*'
+            element={
+              <PrivateRouter sessionIsActive={sessionIsActive}>
                 <DashboardRouter />
-              </Navbar>
-            </PrivateRouter>
-          }
-        />
-        <Route
-          path='/auth/*'
-          element={
-            <PublicRouter sessionIsActive={sessionIsActive}>
-              <Navbar>
+              </PrivateRouter>
+            }
+          />
+          <Route
+            path='/auth/*'
+            element={
+              <PublicRouter sessionIsActive={sessionIsActive}>
                 <AuthRouter />
-              </Navbar>
-            </PublicRouter>
-          }
-        />
-      </Routes>
+              </PublicRouter>
+            }
+          />
+        </Routes>
+      </Navbar>
     </Router>
   );
 };

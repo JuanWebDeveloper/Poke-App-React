@@ -1,0 +1,18 @@
+.loading {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+
+  .loading-circle {
+    @include loading-circle;
+    border: 7px solid rgba($text-color, 0.5);
+    border-top-color: $bg-red;
+    border-radius: 50%;
+    height: 6rem;
+    width: 6rem;
+  }
+}
