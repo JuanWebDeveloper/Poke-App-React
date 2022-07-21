@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from '../../hooks/useForm';
 import { validateSignUp } from '../../helpers/validator';
 import { cleanUpErrors } from '../../actions/ui';
+import { signUp } from '../../actions/auth';
 
 export const SignUp = () => {
   const dispatch = useDispatch();
@@ -34,7 +35,7 @@ export const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const validateData = validateSignUp(formValues, dispatch);
-    validateData && alert('Formulario correcto');
+    validateData && dispatch(signUp(su_username, su_email, su_password));
   };
 
   return (

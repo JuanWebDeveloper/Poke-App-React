@@ -17,7 +17,7 @@ export const validateSignIn = (values = {}, dispatch, errorFirebase = false, err
       dispatch(formsError('Error desconocido.', ''));
     }
 
-    return validationData;
+    return validateData;
   } else {
     const { si_email, si_password } = values;
 
