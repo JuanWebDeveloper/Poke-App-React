@@ -1,6 +1,6 @@
 import { types } from '../types/types';
 
-// Actions to handle errors.
+// Actions To Handle Errors.
 export const formsError = (errorMessage, field) => ({
   type: types.formsError,
   payload: errorMessage,
