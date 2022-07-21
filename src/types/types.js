@@ -3,7 +3,11 @@ export const types = {
   formsError: '[UI] Forms Error',
   cleanUpErrors: '[UI] Clean Up Errors',
 
+  // Types For Loading.
+  startLoading: '[UI] Start Loading',
+  stopLoading: '[UI] Stop Loading',
+
   // Types For Authentication.
-  signIn: '[Auth] Sign In',
-  signOut: '[Auth] Sign Out',
+  initiateAuth: '[Auth] Initiate Auth',
+  finishAuth: '[Auth] Finish Auth',
 };

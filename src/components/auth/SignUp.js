@@ -11,7 +11,7 @@ export const SignUp = () => {
 
   useEffect(() => {
     dispatch(cleanUpErrors());
-  }, []);
+  }, [dispatch]);
 
   const { formValues, handleInputChange } = useForm({
     su_username: '',

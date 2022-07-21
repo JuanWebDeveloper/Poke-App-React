@@ -23,6 +23,16 @@ export const uiReducer = (state = initialState, action) => {
         withMistakes: false,
         validateField: '',
       };
+    case types.startLoading:
+      return {
+        ...state,
+        loading: true,
+      };
+    case types.stopLoading:
+      return {
+        ...state,
+        loading: false,
+      };
     default:
       return state;
   }

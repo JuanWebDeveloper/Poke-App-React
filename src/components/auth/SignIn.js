@@ -11,7 +11,7 @@ export const SignIn = () => {
 
   useEffect(() => {
     dispatch(cleanUpErrors());
-  }, []);
+  }, [dispatch]);
 
   const { formValues, handleInputChange } = useForm({
     si_email: '',
