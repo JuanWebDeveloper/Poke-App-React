@@ -1,13 +1,20 @@
 import { Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { signOUT } from '../../actions/auth';
 import logo from '../../assets/images/logo.svg';
 
 export const Navbar = ({ children }) => {
+  const dispatch = useDispatch();
+  const { isAuthenticated } = useSelector(({ auth }) => auth);
+
   window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     window.scrollY > 0 ? navbar.classList.add('scrolled') : navbar.classList.remove('scrolled');
   });
+
+  const handleSignOut = () => dispatch(signOUT());
 
   return (
     <Fragment>
@@ -16,12 +23,36 @@ export const Navbar = ({ children }) => {
           <img src={logo} alt='logo' />
         </div>
         <div className='navbar-menu'>
-          <NavLink className='navbar-menu_item' to='/auth/sign-in'>
-            Iniciar Sesión
-          </NavLink>
-          <NavLink className='navbar-menu_item' to='/auth/sign-up'>
-            Registrarse
-          </NavLink>
+          {!isAuthenticated && (
+            <NavLink className='navbar-menu_item' to='/auth/sign-in'>
+              Iniciar Sesión
+            </NavLink>
+          )}
+          {!isAuthenticated && (
+            <NavLink className='navbar-menu_item' to='/auth/sign-up'>
+              Registrarse
+            </NavLink>
+          )}
+          {isAuthenticated && (
+            <NavLink className='navbar-menu_item' to='/dashboard/'>
+              Inicio
+            </NavLink>
+          )}
+          {isAuthenticated && (
+            <NavLink className='navbar-menu_item' to='/dashboard/pokemons'>
+              Pokemons
+            </NavLink>
+          )}
+          {isAuthenticated && (
+            <NavLink className='navbar-menu_item' to='/dashboard/favorites'>
+              Mis Favoritos
+            </NavLink>
+          )}
+          {isAuthenticated && (
+            <button className='navbar-menu_item' onClick={handleSignOut}>
+              Cerrar Sesión
+            </button>
+          )}
         </div>
       </div>
       {children}

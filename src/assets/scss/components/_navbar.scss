@@ -28,18 +28,20 @@
 
     &_item {
       border-radius: 5px;
+      border: none;
       color: $text-color;
       cursor: pointer;
       font-size: $font-size_button;
       font-weight: $font-weight_button;
-      text-decoration: none;
+      margin-right: 1rem;
       position: relative;
       padding: 0.7rem 1rem;
+      text-decoration: none;
       transition: $transition;
       z-index: 10;
 
-      &:first-child {
-        margin-right: 1rem;
+      &:last-child {
+        margin-right: 0;
       }
 
       &::before {

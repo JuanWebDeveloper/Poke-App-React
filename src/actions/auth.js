@@ -51,3 +51,6 @@ export const signIn = (email, password) => {
       });
   };
 };
+
+// Action To Sign Out.
+export const signOUT = () => async (dispatch) => await signOut(auth).then(() => dispatch(finishAuth()));
