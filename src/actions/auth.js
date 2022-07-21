@@ -5,7 +5,7 @@ import { validateSignIn, validateSignUp } from '../helpers/validator';
 import { startLoading, stopLoading } from './ui';
 
 // Action To Initiate Authentication.
-const initiateAuth = (uid, username) => ({
+export const initiateAuth = (uid, username) => ({
   type: types.initiateAuth,
   payload: {
     uid,
@@ -14,7 +14,7 @@ const initiateAuth = (uid, username) => ({
 });
 
 // Action To Finish Authentication.
-const finishAuth = () => ({
+export const finishAuth = () => ({
   type: types.finishAuth,
 });
 

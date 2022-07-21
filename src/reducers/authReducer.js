@@ -3,7 +3,6 @@ import { types } from '../types/types';
 const initialState = {
   uid: '',
   username: '',
-  isAuthenticated: false,
 };
 
 export const authReducer = (state = initialState, action) => {
@@ -12,14 +11,12 @@ export const authReducer = (state = initialState, action) => {
       return {
         uid: action.payload.uid,
         username: action.payload.username,
-        isAuthenticated: true,
       };
 
     case types.finishAuth:
       return {
         uid: '',
         username: '',
-        isAuthenticated: false,
       };
 
     default:
