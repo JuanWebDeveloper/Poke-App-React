@@ -1,6 +1,16 @@
 import { initializeApp } from 'firebase/app';
 
-// Firebase Project Config.
+// Imports To Work With Firebase Authentication.
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+} from 'firebase/auth';
+
+// Config For The Project Of Firebase.
 const firebaseConfig = {
   apiKey: 'AIzaSyC4G60_txjH8eXltnRwdts-hktyLVXWiHY',
   authDomain: 'app-to-collect-pokemons.firebaseapp.com',
@@ -13,4 +23,7 @@ const firebaseConfig = {
 // Initialize Firebase.
 const firebaseApp = initializeApp(firebaseConfig);
 
-export { firebaseApp };
+// Config for Firebase Authentication.
+const auth = getAuth();
+
+export { firebaseApp, auth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, onAuthStateChanged, signOut };
