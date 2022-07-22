@@ -10,4 +10,7 @@ export const types = {
   // Types For Authentication.
   initiateAuth: '[Auth] Initiate Auth',
   finishAuth: '[Auth] Finish Auth',
+
+  // Types For Pokemons.
+  getPokemons: '[Pokemons] Get Pokemons',
 };

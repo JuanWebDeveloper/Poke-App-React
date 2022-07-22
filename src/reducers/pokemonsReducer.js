@@ -11,6 +11,8 @@ const initialState = [
 
 export const pokemonsReducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.getPokemons:
+      return action.payload;
     default:
       return state;
   }

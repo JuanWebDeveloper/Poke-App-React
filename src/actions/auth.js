@@ -1,6 +1,6 @@
-import { types } from '../types/types';
 import { auth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, signOut } from '../firebase/firebaseConfig';
 
+import { types } from '../types/types';
 import { validateSignIn, validateSignUp } from '../helpers/validator';
 import { startLoading, stopLoading } from './ui';
 
