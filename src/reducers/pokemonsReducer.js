@@ -26,6 +26,11 @@ export const pokemonsReducer = (state = initialState, action) => {
         ...state,
         pokemons: action.payload,
       };
+    case types.getPokemonDetails:
+      return {
+        ...state,
+        pokemonDetails: action.payload,
+      };
     default:
       return state;
   }

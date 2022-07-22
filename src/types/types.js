@@ -13,4 +13,5 @@ export const types = {
 
   // Types For Pokemons.
   getPokemons: '[Pokemons] Get Pokemons',
+  getPokemonDetails: '[Pokemons] Get Pokemon Details',
 };

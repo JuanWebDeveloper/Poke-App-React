@@ -1,6 +1,17 @@
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { getPokemonDetails } from '../../actions/pokemons';
 
 export const PokemonDetails = () => {
+  const { id } = useParams();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    return () => dispatch(getPokemonDetails(id));
+  }, [dispatch, id]);
+
   return (
     <div className='pokemon-details'>
       <div className='pokemon-details_content'>
