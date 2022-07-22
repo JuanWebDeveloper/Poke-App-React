@@ -12,12 +12,10 @@ const initialState = {
     id: '',
     name: '',
     image: '',
-    description: '',
     moves: [''],
     stats: [{ name: '', value: '' }],
     species: '',
     types: [''],
-    evolution: '',
   },
 };
 
