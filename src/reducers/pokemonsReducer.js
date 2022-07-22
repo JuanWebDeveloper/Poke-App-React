@@ -14,7 +14,7 @@ const initialState = {
     image: '',
     moves: [''],
     stats: [{ name: '', value: '' }],
-    species: '',
+    specie: '',
     types: [''],
   },
 };

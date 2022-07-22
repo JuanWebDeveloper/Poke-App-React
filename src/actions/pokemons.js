@@ -56,7 +56,7 @@ export const getPokemonDetails = (id) => {
               value: stat.base_stat,
             };
           }),
-          species: data.species.name,
+          specie: data.species.name,
           types: data.types.map((type) => type.type.name),
         };
 

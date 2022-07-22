@@ -1,14 +1,16 @@
 import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { getPokemonDetails } from '../../actions/pokemons';
 
 export const PokemonDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const { pokemonDetails } = useSelector(({ pokemons }) => pokemons);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     return () => dispatch(getPokemonDetails(id));
   }, [dispatch, id]);
 
@@ -22,61 +24,46 @@ export const PokemonDetails = () => {
           </button>
         </Link>
         <div className='pokemon-details_content-image'>
-          <img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png' alt='pokemon' />
+          <img src={pokemonDetails.image} alt={pokemonDetails.name} />
         </div>
         <div className='pokemon-details_content-info'>
-          <h2 className='title'>Bulbasaur</h2>
+          <h2 className='title capitalize'>{pokemonDetails.name}</h2>
 
           <div className='pokemon-details_content-info_section'>
             <h2 className='sub-title'>Moves</h2>
             <ul>
-              <li>
-                <i className='fa-solid fa-share'></i> Tackle
-              </li>
-              <li>
-                <i className='fa-solid fa-share'></i> Growl
-              </li>
-              <li>
-                <i className='fa-solid fa-share'></i> Vine Whip
-              </li>
+              {pokemonDetails.moves.map((move) => (
+                <li key={move}>
+                  <i className='fa-solid fa-share'></i> {move}
+                </li>
+              ))}
             </ul>
           </div>
 
           <div className='pokemon-details_content-info_section'>
             <h2 className='sub-title'>Stats</h2>
             <ul>
-              <li>
-                <i className='fa-solid fa-share'></i>
-                HP: <span>45</span>
-              </li>
-              <li>
-                <i className='fa-solid fa-share'></i>
-                Attack: <span>45</span>
-              </li>
-              <li>
-                <i className='fa-solid fa-share'></i>
-                Defense: <span>45</span>
-              </li>
-              <li>
-                <i className='fa-solid fa-share'></i>
-                Speed: <span>45</span>
-              </li>
+              {pokemonDetails.stats.map((stat) => (
+                <li key={stat.name}>
+                  <i className='fa-solid fa-share'></i>
+                  {stat.name}: <span>{stat.value}</span>
+                </li>
+              ))}
             </ul>
           </div>
 
           <h2 className='sub-title'>
-            Specie: <span>Bulbasaur</span>
+            Specie: <span className='capitalize'>{pokemonDetails.specie}</span>
           </h2>
 
           <div className='pokemon-details_content-info_section'>
             <h2 className='sub-title'>Types</h2>
             <ul>
-              <li>
-                <i className='fa-solid fa-share'></i>Grass
-              </li>
-              <li>
-                <i className='fa-solid fa-share'></i>Poison
-              </li>
+              {pokemonDetails.types.map((type) => (
+                <li key={type}>
+                  <i className='fa-solid fa-share'></i> {type}
+                </li>
+              ))}
             </ul>
           </div>
         </div>
