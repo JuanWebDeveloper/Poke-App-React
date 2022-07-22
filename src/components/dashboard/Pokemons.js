@@ -1,3 +1,16 @@
+import { Card } from './Card';
+
 export const Pokemons = () => {
-  return <div>Pokemons</div>;
+  return (
+    <div className='pokemons'>
+      <div className='pokemons-content'>
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+      </div>
+    </div>
+  );
 };

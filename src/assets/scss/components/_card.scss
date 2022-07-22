@@ -1,0 +1,58 @@
+.card {
+  background-color: rgba($bg-tertiary, 0.9);
+  backdrop-filter: brightness(90%);
+  border-radius: 5px;
+  box-shadow: $bs-secondary;
+  margin-bottom: 2rem;
+  position: relative;
+  padding: 1rem;
+  width: 30%;
+
+  &-content {
+    position: relative;
+    width: 100%;
+
+    &_header {
+      height: 150px;
+      position: relative;
+      width: 100%;
+
+      img {
+        height: 100%;
+        object-fit: contain;
+        width: 100%;
+      }
+    }
+
+    &_body {
+      position: relative;
+      text-align: center;
+      width: 100%;
+
+      &-actions {
+        button {
+          &:first-child {
+            margin: 1rem 0;
+            background-color: $bg-blue;
+
+            &:hover {
+              &::before {
+                background-color: lighten($bg-blue, 15);
+              }
+            }
+          }
+
+          &:last-child {
+            background-color: $bg-red;
+
+            &:hover {
+              &::before {
+                background-color: lighten($bg-red, 7);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
