@@ -1,12 +1,12 @@
-export const Card = () => {
+export const Card = ({ name, image }) => {
   return (
     <div className='card'>
       <div className='card-content'>
         <div className='card-content_header'>
-          <img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/2.png' alt='ivysaur' />
+          <img src={image} alt={name} />
         </div>
         <div className='card-content_body'>
-          <h2 className='sub-title'>ivysaur</h2>
+          <h2 className='sub-title'>{name}</h2>
           <div className='card-content_body-actions'>
             <button className='btn-default'>
               Ver más <i className='fa-solid fa-chevron-right'></i>

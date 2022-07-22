@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // Actions.
 import { getPokemons } from '../../actions/pokemons';
@@ -9,6 +9,7 @@ import { Card } from './Card';
 
 export const Pokemons = () => {
   const dispatch = useDispatch();
+  const { pokemons } = useSelector(({ pokemons }) => pokemons);
 
   useEffect(() => {
     return () => dispatch(getPokemons());
@@ -17,12 +18,9 @@ export const Pokemons = () => {
   return (
     <div className='pokemons'>
       <div className='pokemons-content'>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {pokemons.map((pokemon) => (
+          <Card key={pokemon.id} {...pokemon} />
+        ))}
       </div>
     </div>
   );
