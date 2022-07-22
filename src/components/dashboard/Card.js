@@ -1,4 +1,6 @@
-export const Card = ({ name, image }) => {
+import { Link } from 'react-router-dom';
+
+export const Card = ({ id, name, image }) => {
   return (
     <div className='card'>
       <div className='card-content'>
@@ -8,9 +10,11 @@ export const Card = ({ name, image }) => {
         <div className='card-content_body'>
           <h2 className='sub-title'>{name}</h2>
           <div className='card-content_body-actions'>
-            <button className='btn-default'>
-              Ver más <i className='fa-solid fa-chevron-right'></i>
-            </button>
+            <Link to={`/dashboard/pokemon/${id}`}>
+              <button className='btn-default btn-vm'>
+                Ver más <i className='fa-solid fa-chevron-right'></i>
+              </button>
+            </Link>
             <button className='btn-default'>
               Agregar a favoritos <i className='fa-solid fa-star'></i>
             </button>
