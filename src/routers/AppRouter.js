@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { auth, onAuthStateChanged } from '../firebase/firebaseConfig';
 
@@ -59,6 +59,7 @@ export const AppRouter = () => {
               </PublicRouter>
             }
           />
+          <Route path='*' element={<Navigate to='/auth/sign-in' />} />
         </Routes>
       </Navbar>
     </Router>
