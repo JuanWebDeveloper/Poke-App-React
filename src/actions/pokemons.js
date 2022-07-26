@@ -82,30 +82,18 @@ export const getPokemonByName = (name) => {
     await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
       .then((response) => response.json())
       .then((data) => {
-        if (data.length === 0) {
-          dispatch(
-            pokemonByName({
-              id: '',
-              name: '',
-              image: '',
-              thereResult: false,
-            })
-          );
-        } else {
-          const mapPokemon = {
-            id: data.id,
-            name: data.name,
-            image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.id}.png`,
-            thereResult: true,
-          };
+        const mapPokemon = {
+          id: data.id,
+          name: data.name,
+          image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.id}.png`,
+          thereResult: true,
+        };
 
-          dispatch(pokemonByName(mapPokemon));
-        }
-
+        dispatch(pokemonByName(mapPokemon));
         dispatch(stopLoading());
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
+        dispatch(pokemonByName({ id: '', name: '', image: '', thereResult: false }));
         dispatch(stopLoading());
       });
   };

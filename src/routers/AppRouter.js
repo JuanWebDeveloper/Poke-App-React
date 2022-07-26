@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { auth, onAuthStateChanged } from '../firebase/firebaseConfig';
 
 // Actions.
@@ -19,7 +19,6 @@ import { Loading } from '../components/loading/Loading';
 
 export const AppRouter = () => {
   const dispatch = useDispatch();
-  const { loadign } = useSelector(({ ui }) => ui);
 
   const [sessionIsActive, setSessionIsActive] = useState(false);
   const [sessionVerification, setSessionVerification] = useState(true);
@@ -39,8 +38,12 @@ export const AppRouter = () => {
       });
   }, [dispatch]);
 
-  if (sessionVerification || loadign) {
-    return <Loading />;
+  if (sessionVerification) {
+    return (
+      <div className='main-loading'>
+        <Loading />
+      </div>
+    );
   }
 
   return (

@@ -55,12 +55,21 @@
       }
     }
 
-    &_results {
+    &_result {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
+      justify-content: center;
       position: relative;
       width: 100%;
+    }
+
+    &_without-result {
+      position: relative;
+      font-size: $font-size_sub-title;
+
+      span {
+        color: $title-color;
+        font-weight: $font-weight_sub-title;
+      }
     }
   }
 }

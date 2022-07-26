@@ -8,7 +8,7 @@ export const Card = ({ id, name, image }) => {
           <img src={image} alt={name} />
         </div>
         <div className='card-content_body'>
-          <h2 className='sub-title'>{name}</h2>
+          <h2 className='sub-title capitalize'>{name}</h2>
           <div className='card-content_body-actions'>
             <Link to={`/dashboard/pokemon/${id}`}>
               <button className='btn-default btn-vm'>

@@ -45,6 +45,18 @@ p {
   }
 }
 
+.capitalize {
+  text-transform: capitalize;
+}
+
+.main-loading {
+  height: 100vh;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+}
+
 .form {
   margin-top: 1rem;
   position: relative;
@@ -147,5 +159,10 @@ p {
     &::before {
       @include scale-in_XY;
     }
+  }
+
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.5;
   }
 }

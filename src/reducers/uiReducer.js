@@ -2,7 +2,7 @@ import { types } from '../types/types';
 
 const initialState = {
   errorMessage: '',
-  loadign: false,
+  loading: false,
   withMistakes: false,
   validateField: '',
 };

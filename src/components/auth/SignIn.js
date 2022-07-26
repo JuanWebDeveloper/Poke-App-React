@@ -11,7 +11,7 @@ export const SignIn = () => {
   const { errorMessage, withMistakes, validateField } = useSelector(({ ui }) => ui);
 
   useEffect(() => {
-    dispatch(cleanUpErrors());
+    return () => dispatch(cleanUpErrors());
   }, [dispatch]);
 
   const { formValues, handleInputChange } = useForm({
