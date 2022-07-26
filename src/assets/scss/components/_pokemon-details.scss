@@ -23,6 +23,14 @@
           background-color: lighten($bg-red, 7);
         }
       }
+
+      @media (max-width: 60rem) {
+        display: block;
+        left: 0;
+        margin: 0 auto;
+        margin-bottom: 1rem;
+        position: relative;
+      }
     }
 
     &-image {
