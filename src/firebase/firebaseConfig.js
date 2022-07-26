@@ -11,7 +11,7 @@ import {
 } from 'firebase/auth';
 
 // Imports To Work With Firebase Firestore.
-import { getFirestore, addDoc, collection, doc, getDocs, updateDoc } from 'firebase/firestore';
+import { getFirestore, addDoc, collection, doc, getDocs, deleteDoc } from 'firebase/firestore';
 
 // Config For The Project Of Firebase.
 const firebaseConfig = {
@@ -45,5 +45,5 @@ export {
   collection,
   doc,
   getDocs,
-  updateDoc,
+  deleteDoc,
 };

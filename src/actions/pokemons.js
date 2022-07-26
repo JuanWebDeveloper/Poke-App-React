@@ -48,7 +48,7 @@ export const getPokemonDetails = (id) => {
       .then((response) => response.json())
       .then((data) => {
         const mapPokemon = {
-          id: data.id,
+          id: String(data.id),
           name: data.name,
           image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.id}.png`,
           moves: data.moves.map((move) => move.move.name),
@@ -85,7 +85,7 @@ export const getPokemonByName = (name) => {
       .then((response) => response.json())
       .then((data) => {
         const mapPokemon = {
-          id: data.id,
+          id: String(data.id),
           name: data.name,
           image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.id}.png`,
           thereResult: true,
@@ -116,7 +116,7 @@ export const getFavoritePokemons = () => {
     const pokemons = [];
 
     snapshot.forEach((doc) => {
-      pokemons.push({ id: doc.id, ...doc.data() });
+      pokemons.push({ docId: doc.id, ...doc.data() });
     });
 
     dispatch(favoritePokemons(pokemons));
