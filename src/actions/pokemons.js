@@ -69,3 +69,44 @@ export const getPokemonDetails = (id) => {
       });
   };
 };
+
+// Action To Get Pokemon By Name.
+const pokemonByName = (results) => ({
+  type: types.getPokemonByName,
+  payload: results,
+});
+
+export const getPokemonByName = (name) => {
+  return async (dispatch) => {
+    dispatch(startLoading());
+    await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.length === 0) {
+          dispatch(
+            pokemonByName({
+              id: '',
+              name: '',
+              image: '',
+              thereResult: false,
+            })
+          );
+        } else {
+          const mapPokemon = {
+            id: data.id,
+            name: data.name,
+            image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.id}.png`,
+            thereResult: true,
+          };
+
+          dispatch(pokemonByName(mapPokemon));
+        }
+
+        dispatch(stopLoading());
+      })
+      .catch((error) => {
+        console.log(error);
+        dispatch(stopLoading());
+      });
+  };
+};

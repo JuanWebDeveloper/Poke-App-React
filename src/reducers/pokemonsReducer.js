@@ -17,6 +17,12 @@ const initialState = {
     specie: '',
     types: [''],
   },
+  pokemonByName: {
+    id: '',
+    name: '',
+    image: '',
+    thereResult: false,
+  },
 };
 
 export const pokemonsReducer = (state = initialState, action) => {
@@ -30,6 +36,11 @@ export const pokemonsReducer = (state = initialState, action) => {
       return {
         ...state,
         pokemonDetails: action.payload,
+      };
+    case types.getPokemonByName:
+      return {
+        ...state,
+        pokemonByName: action.payload,
       };
     default:
       return state;
