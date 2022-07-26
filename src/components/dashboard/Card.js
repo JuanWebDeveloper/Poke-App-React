@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { addPokemonToFavoritesAction } from '../../actions/pokemons';
 
 export const Card = ({ id, name, image }) => {
   const dispatch = useDispatch();
+  const { favorites } = useSelector(({ pokemons }) => pokemons);
+  const isFavorite = favorites.find((pokemon) => pokemon.id === id);
 
   const addPokemonToFavorites = () => {
     const pokemon = { id, name, image };
@@ -15,21 +17,26 @@ export const Card = ({ id, name, image }) => {
   return (
     <div className='card'>
       <div className='card-content'>
+        {isFavorite ? (
+          <button className='btn-rf'>
+            <i className='fa-solid fa-star'></i>
+          </button>
+        ) : (
+          <button className='btn-af' onClick={addPokemonToFavorites}>
+            <i className='fa-solid fa-star'></i>
+          </button>
+        )}
         <div className='card-content_header'>
           <img src={image} alt={name} />
         </div>
         <div className='card-content_body'>
           <h2 className='sub-title capitalize'>{name}</h2>
-          <div className='card-content_body-actions'>
-            <Link to={`/dashboard/pokemon/${id}`}>
-              <button className='btn-default btn-vm'>
-                Ver más <i className='fa-solid fa-chevron-right'></i>
-              </button>
-            </Link>
-            <button className='btn-default' onClick={addPokemonToFavorites}>
-              Agregar a favoritos <i className='fa-solid fa-star'></i>
+
+          <Link to={`/dashboard/pokemon/${id}`}>
+            <button className='btn-default'>
+              Ver Más <i className='fa-solid fa-chevron-right'></i>
             </button>
-          </div>
+          </Link>
         </div>
       </div>
     </div>

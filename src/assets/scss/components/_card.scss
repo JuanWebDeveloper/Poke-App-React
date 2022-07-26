@@ -12,6 +12,52 @@
     position: relative;
     width: 100%;
 
+    .btn-af,
+    .btn-rf {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      left: 0;
+      position: absolute;
+      padding: 0;
+      top: 0;
+      transition: $transition;
+      z-index: 1;
+
+      i {
+        font-size: 2rem;
+        transition: $transition;
+      }
+
+      &:hover {
+        transform: scale(1.3);
+      }
+    }
+
+    .btn-af {
+      i {
+        color: $white-color;
+      }
+
+      &:hover {
+        i {
+          color: #f0f329;
+        }
+      }
+    }
+
+    .btn-rf {
+      i {
+        color: #f0f329;
+      }
+
+      &:hover {
+        i {
+          color: $white-color;
+        }
+      }
+    }
+
     &_header {
       height: 150px;
       position: relative;
@@ -29,25 +75,13 @@
       text-align: center;
       width: 100%;
 
-      &-actions {
-        .btn-vm {
-          margin: 1rem 0;
-          background-color: $bg-blue;
+      button {
+        margin-top: 1rem;
+        background-color: $bg-blue;
 
-          &:hover {
-            &::before {
-              background-color: lighten($bg-blue, 15);
-            }
-          }
-        }
-
-        button {
-          background-color: $bg-red;
-
-          &:hover {
-            &::before {
-              background-color: lighten($bg-red, 7);
-            }
+        &:hover {
+          &::before {
+            background-color: lighten($bg-blue, 15);
           }
         }
       }
