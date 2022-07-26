@@ -112,7 +112,7 @@ export const addPokemonToFavoritesAction = (pokemon) => {
     dispatch(startLoading());
     const { uid } = getState().auth;
 
-    const documentReference = await addDoc(collection(firestore, `${uid}/favorites`), pokemon);
+    const documentReference = await addDoc(collection(firestore, `${uid}/pokemons/favorites`), pokemon);
 
     const mapPokemon = {
       docId: documentReference.id,
