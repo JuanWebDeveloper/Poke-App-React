@@ -1,70 +1,27 @@
-# Getting Started with Create React App
+# Reto - Frontend Con React.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Resumen:
 
-## Available Scripts
+Esta aplicación es un reto el cual consiste en crear una aplicación que permita el registro de usuarios, el inicio de sesión y el consumo de una API REST que para esta aplicación se utilizo la de pokemon.
 
-In the project directory, you can run:
+La finalidad de este reto es evaluar la capacidad de desarrollo de una aplicación frontend con React.
 
-### `npm start`
+## Requerimientos:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Conectar con API https://pokeapi.co/api/v2/ y traer una lista de 50 pokemons. ✅
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Al hacer clic en una de las tarjetas de los pokémon debe ir a una página con los datos de el pokemon en cuestión, con posibilidad de regresar a la lista mencionada en la parte. ✅
 
-### `npm test`
+- Crear un componente para poder hacer una búsqueda de algún pokémon según su nombre y poder hacer clic en la(s) tarjeta(s) resultantes este para ver sus valores como en la parte II. ✅
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Crear en la página la funcionalidad de login usando el contexto global para traer los datos del usuario y poner un estado en valor true o false si está logueado, mostrar nombre del usuario logueado en la parte superior y configurar rutas públicas y privadas según corresponda. ✅
 
-### `npm run build`
+- agrega un botón de estrella en las tarjetas para presionarlo y volverlo como favorito y mostrarlo en una lista de favoritos. ✅
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Cambiar el login a uno con Oauth, usar firebase para gestionar el usuario y el login con correo y contraseña, mantener las rutas privadas si está autorizado. ✅
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Desplegar proyecto a servicio preferido, Vercel, Heroku, Netlify, Firebase. ✅
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Link Del Despliegue Del Proyecto:
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+https://app-to-collect-pokemons.web.app/
