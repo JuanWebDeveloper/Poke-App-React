@@ -13,8 +13,24 @@ export const Navbar = ({ children }) => {
 
   window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
-    window.scrollY > 0 ? navbar.classList.add('scrolled') : navbar.classList.remove('scrolled');
+    const navigation = document.querySelector('#navigation');
+
+    if (window.scrollY > 0) {
+      navbar.classList.add('scrolled');
+      navigation.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+      navigation.classList.remove('scrolled');
+    }
   });
+
+  const showAndHideNavbar = () => {
+    const bars = document.querySelector('#bars');
+    const navigation = document.querySelector('#navigation');
+
+    bars.classList.toggle('active');
+    navigation.classList.toggle('active');
+  };
 
   const handleSignOut = () => {
     dispatch(signOUT());
@@ -27,7 +43,14 @@ export const Navbar = ({ children }) => {
         <div className='navbar-logo'>
           <img src={logo} alt='logo' />
         </div>
-        <div className='navbar-menu'>
+
+        <div className='navbar-bars' id='bars' onClick={showAndHideNavbar}>
+          <div className='bar'></div>
+          <div className='bar'></div>
+          <div className='bar'></div>
+        </div>
+
+        <div className='navbar-menu' id='navigation'>
           {!isAuthenticated && (
             <NavLink className='navbar-menu_item' to='/auth/sign-in'>
               Iniciar Sesión
