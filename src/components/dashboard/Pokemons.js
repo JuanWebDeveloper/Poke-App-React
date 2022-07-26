@@ -1,18 +1,29 @@
+import { Fragment } from 'react';
 import { useSelector } from 'react-redux';
 
-// Card Component.
+// Components.
 import { Card } from './Card';
+import { Loading } from '../loading/Loading';
 
 export const Pokemons = () => {
   const { pokemons } = useSelector(({ pokemons }) => pokemons);
+  const { loading } = useSelector(({ ui }) => ui);
 
   return (
-    <div className='pokemons'>
-      <div className='pokemons-content'>
-        {pokemons.map((pokemon) => (
-          <Card key={pokemon.id} {...pokemon} />
-        ))}
-      </div>
-    </div>
+    <Fragment>
+      {loading ? (
+        <div className='main-loading'>
+          <Loading />
+        </div>
+      ) : (
+        <div className='pokemons'>
+          <div className='pokemons-content'>
+            {pokemons.map((pokemon) => (
+              <Card key={pokemon.id} {...pokemon} />
+            ))}
+          </div>
+        </div>
+      )}
+    </Fragment>
   );
 };
