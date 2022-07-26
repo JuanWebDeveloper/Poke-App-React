@@ -1,3 +1,5 @@
+import { addDoc, collection, firestore } from '../firebase/firebaseConfig';
+
 import { types } from '../types/types';
 import { startLoading, stopLoading } from './ui';
 
@@ -96,5 +98,27 @@ export const getPokemonByName = (name) => {
         dispatch(pokemonByName({ id: '', name: '', image: '', thereResult: false }));
         dispatch(stopLoading());
       });
+  };
+};
+
+// Action To Add Pokemon To Favorites.
+const addPokemonToFavorites = (pokemon) => ({
+  type: types.addPokemonToFavorites,
+  payload: pokemon,
+});
+
+export const addPokemonToFavoritesAction = (pokemon) => {
+  return async (dispatch, getState) => {
+    dispatch(startLoading());
+    const { uid } = getState().auth;
+
+    const documentReference = await addDoc(collection(firestore, `${uid}/favorites`), pokemon);
+
+    const mapPokemon = {
+      docId: documentReference.id,
+      ...pokemon,
+    };
+
+    dispatch(addPokemonToFavorites(mapPokemon));
   };
 };

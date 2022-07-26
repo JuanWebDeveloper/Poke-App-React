@@ -8,6 +8,14 @@ const initialState = {
       image: '',
     },
   ],
+  favorites: [
+    {
+      docId: '',
+      id: '',
+      name: '',
+      image: '',
+    },
+  ],
   pokemonDetails: {
     id: '',
     name: '',
@@ -41,6 +49,11 @@ export const pokemonsReducer = (state = initialState, action) => {
       return {
         ...state,
         pokemonByName: action.payload,
+      };
+    case types.addPokemonToFavorites:
+      return {
+        ...state,
+        favorites: [...state.favorites, action.payload],
       };
     default:
       return state;
