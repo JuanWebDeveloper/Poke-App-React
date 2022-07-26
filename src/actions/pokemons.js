@@ -156,3 +156,8 @@ export const removePokemonFromFavoritesAction = (id) => {
     dispatch(stopLoading());
   };
 };
+
+// Action To Clean Up The State Of The Pokemons.
+export const cleanUpPokemons = () => ({
+  type: types.cleanUpPokemons,
+});

@@ -18,4 +18,5 @@ export const types = {
   getFavoritePokemons: '[Pokemons] Get Favorite Pokemons',
   addPokemonToFavorites: '[Pokemons] Add Pokemon To Favorites',
   removePokemonFromFavorites: '[Pokemons] Remove Pokemon From Favorites',
+  cleanUpPokemons: '[Pokemons] Clean Up Pokemons',
 };

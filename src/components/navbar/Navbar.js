@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { signOUT } from '../../actions/auth';
+import { cleanUpPokemons } from '../../actions/pokemons';
+
 import logo from '../../assets/images/logo.svg';
 
 export const Navbar = ({ children }) => {
@@ -14,7 +16,10 @@ export const Navbar = ({ children }) => {
     window.scrollY > 0 ? navbar.classList.add('scrolled') : navbar.classList.remove('scrolled');
   });
 
-  const handleSignOut = () => dispatch(signOUT());
+  const handleSignOut = () => {
+    dispatch(signOUT());
+    dispatch(cleanUpPokemons());
+  };
 
   return (
     <Fragment>

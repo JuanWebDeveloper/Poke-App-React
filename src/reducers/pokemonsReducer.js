@@ -65,6 +65,10 @@ export const pokemonsReducer = (state = initialState, action) => {
         ...state,
         favorites: state.favorites.filter((pokemon) => pokemon.docId !== action.payload),
       };
+    case types.cleanUpPokemons:
+      return {
+        ...initialState,
+      };
     default:
       return state;
   }
