@@ -25,6 +25,11 @@ export const Search = () => {
 
   return (
     <div className='search'>
+      {loading && (
+        <div className='main-loading'>
+          <Loading />
+        </div>
+      )}
       <div className='search-content'>
         <div className='search-content_search'>
           <form onSubmit={handleSubmit}>
@@ -32,17 +37,16 @@ export const Search = () => {
             <button className={`btn-default ${search.length < 1 && 'disabled'}`}>Buscar</button>
           </form>
         </div>
-        {loading ? (
-          <Loading />
-        ) : (
+
+        {searching && (
           <Fragment>
-            {searching && (
+            {pokemonByName.thereResult ? (
+              <div className='search-content_result'>
+                <Card {...pokemonByName} />
+              </div>
+            ) : (
               <Fragment>
-                {pokemonByName.thereResult ? (
-                  <div className='search-content_result'>
-                    <Card {...pokemonByName} />
-                  </div>
-                ) : (
+                {!loading && (
                   <div className='search-content_without-result'>
                     No se encontro ningun pokemon con el nombre: <span>{search}</span>
                   </div>

@@ -11,35 +11,34 @@ export const Favorites = () => {
   const { loading } = useSelector(({ ui }) => ui);
 
   return (
-    <Fragment>
-      {loading ? (
+    <div className='favorites'>
+      {loading && (
         <div className='main-loading'>
           <Loading />
         </div>
-      ) : (
-        <div className='favorites'>
-          <div className='favorites-content'>
-            {favorites.length > 0 ? (
-              <Fragment>
-                <h2 className='title capitalize'>Mis pokemons favoritos</h2>
-                <div className='favorites-content_pokemons'>
-                  {favorites.map((pokemon) => (
-                    <Card key={pokemon.docId} {...pokemon} />
-                  ))}
-                </div>
-              </Fragment>
-            ) : (
-              <div className='favorites-content_no-favorites'>
-                <h2 className='title capitalize'>No tienes pokemons favoritos.</h2>
-                <p>Para agregar un pokemon a tus favoritos, haz click en el botón de favorito de cada pokemon.</p>
-                <Link to='/dashboard/pokemons'>
-                  <button className='btn-default'>Ver Pokemons.</button>
-                </Link>
+      )}
+      {!loading && (
+        <div className='favorites-content'>
+          {favorites.length > 0 ? (
+            <Fragment>
+              <h2 className='title capitalize'>Mis pokemons favoritos</h2>
+              <div className='favorites-content_pokemons'>
+                {favorites.map((pokemon) => (
+                  <Card key={pokemon.docId} {...pokemon} />
+                ))}
               </div>
-            )}
-          </div>
+            </Fragment>
+          ) : (
+            <div className='favorites-content_no-favorites'>
+              <h2 className='title capitalize'>No tienes pokemons favoritos.</h2>
+              <p>Para agregar un pokemon a tus favoritos, haz click en el botón de favorito de cada pokemon.</p>
+              <Link to='/dashboard/pokemons'>
+                <button className='btn-default'>Ver Pokemons.</button>
+              </Link>
+            </div>
+          )}
         </div>
       )}
-    </Fragment>
+    </div>
   );
 };

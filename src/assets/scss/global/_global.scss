@@ -50,11 +50,14 @@ p {
 }
 
 .main-loading {
+  background-color: rgba($bg-tertiary, 0.5);
+  backdrop-filter: brightness(30%);
   height: 100vh;
   left: 0;
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100vw;
+  z-index: 15;
 }
 
 .form {

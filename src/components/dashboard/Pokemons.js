@@ -10,20 +10,17 @@ export const Pokemons = () => {
   const { loading } = useSelector(({ ui }) => ui);
 
   return (
-    <Fragment>
-      {loading ? (
+    <div className='pokemons'>
+      {loading && (
         <div className='main-loading'>
           <Loading />
         </div>
-      ) : (
-        <div className='pokemons'>
-          <div className='pokemons-content'>
-            {pokemons.map((pokemon) => (
-              <Card key={pokemon.id} {...pokemon} />
-            ))}
-          </div>
-        </div>
       )}
-    </Fragment>
+      <div className='pokemons-content'>
+        {pokemons.map((pokemon) => (
+          <Card key={pokemon.id} {...pokemon} />
+        ))}
+      </div>
+    </div>
   );
 };

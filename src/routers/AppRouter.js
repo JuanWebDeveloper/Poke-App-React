@@ -28,8 +28,7 @@ export const AppRouter = () => {
       onAuthStateChanged(auth, (user) => {
         if (user) {
           dispatch(initiateAuth(user.uid, user.displayName));
-          dispatch(getPokemons());
-          dispatch(getFavoritePokemons());
+          dispatch(getPokemons()).then(() => dispatch(getFavoritePokemons()));
           setSessionIsActive(true);
         } else {
           setSessionIsActive(false);
