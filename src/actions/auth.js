@@ -23,8 +23,9 @@ export const signUp = (username, email, password) => {
   return async (dispatch) => {
     dispatch(startLoading());
     await createUserWithEmailAndPassword(auth, email, password)
-      .then(async () => {
+      .then(async ({ user }) => {
         await updateProfile(auth.currentUser, { displayName: username }).then(() => {
+          dispatch(initiateAuth(user.uid, user.displayName));
           dispatch(stopLoading());
         });
       })
@@ -51,4 +52,10 @@ export const signIn = (email, password) => {
 };
 
 // Action To Sign Out.
-export const signOUT = () => async (dispatch) => await signOut(auth).then(() => dispatch(finishAuth()));
+export const signOUT = () => async (dispatch) => {
+  dispatch(startLoading());
+  await signOut(auth).then(() => {
+    dispatch(finishAuth());
+    dispatch(stopLoading());
+  });
+};
