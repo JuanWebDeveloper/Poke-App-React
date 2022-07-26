@@ -1,4 +1,4 @@
-import { addDoc, collection, firestore } from '../firebase/firebaseConfig';
+import { addDoc, collection, firestore, getDocs } from '../firebase/firebaseConfig';
 
 import { types } from '../types/types';
 import { startLoading, stopLoading } from './ui';
@@ -101,6 +101,29 @@ export const getPokemonByName = (name) => {
   };
 };
 
+// Action To Get The Favorite Pokemons.
+const favoritePokemons = (pokemons) => ({
+  type: types.getFavoritePokemons,
+  payload: pokemons,
+});
+
+export const getFavoritePokemons = () => {
+  return async (dispatch, getState) => {
+    dispatch(startLoading());
+    const { uid } = getState().auth;
+    const docRef = collection(firestore, `${uid}/pokemons/favorites`);
+    const snapshot = await getDocs(docRef);
+    const pokemons = [];
+
+    snapshot.forEach((doc) => {
+      pokemons.push({ id: doc.id, ...doc.data() });
+    });
+
+    dispatch(favoritePokemons(pokemons));
+    dispatch(stopLoading());
+  };
+};
+
 // Action To Add Pokemon To Favorites.
 const addPokemonToFavorites = (pokemon) => ({
   type: types.addPokemonToFavorites,
@@ -112,13 +135,9 @@ export const addPokemonToFavoritesAction = (pokemon) => {
     dispatch(startLoading());
     const { uid } = getState().auth;
 
-    const documentReference = await addDoc(collection(firestore, `${uid}/pokemons/favorites`), pokemon);
+    const docRef = await addDoc(collection(firestore, `${uid}/pokemons/favorites`), pokemon);
 
-    const mapPokemon = {
-      docId: documentReference.id,
-      ...pokemon,
-    };
-
-    dispatch(addPokemonToFavorites(mapPokemon));
+    dispatch(addPokemonToFavorites({ docId: docRef.id, ...pokemon }));
+    dispatch(stopLoading());
   };
 };

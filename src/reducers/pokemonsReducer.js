@@ -50,6 +50,11 @@ export const pokemonsReducer = (state = initialState, action) => {
         ...state,
         pokemonByName: action.payload,
       };
+    case types.getFavoritePokemons:
+      return {
+        ...state,
+        favorites: action.payload,
+      };
     case types.addPokemonToFavorites:
       return {
         ...state,
