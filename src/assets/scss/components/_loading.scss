@@ -7,7 +7,7 @@
   position: relative;
   width: 100%;
 
-  .loading-circle {
+  &-circle {
     @include loading-circle;
     border: 7px solid rgba($text-color, 0.5);
     border-top-color: $bg-red;

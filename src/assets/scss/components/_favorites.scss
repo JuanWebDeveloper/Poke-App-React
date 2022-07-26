@@ -1,0 +1,20 @@
+.favorites {
+  position: relative;
+  width: 100vw;
+
+  &-content {
+    margin-top: calc(80px + 2rem);
+    position: relative;
+    padding: 0 2rem;
+    width: 100%;
+
+    &_pokemons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-top: 2rem;
+      position: relative;
+      width: 100%;
+    }
+  }
+}
