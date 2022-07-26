@@ -53,6 +53,14 @@
           }
         }
       }
+
+      @media (max-width: 48rem) {
+        width: 65%;
+      }
+
+      @media (max-width: 30rem) {
+        width: 100%;
+      }
     }
 
     &_result {
