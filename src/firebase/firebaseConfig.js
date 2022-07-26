@@ -10,6 +10,9 @@ import {
   signOut,
 } from 'firebase/auth';
 
+// Imports To Work With Firebase Firestore.
+import { getFirestore, addDoc, collection, doc, getDocs, updateDoc } from 'firebase/firestore';
+
 // Config For The Project Of Firebase.
 const firebaseConfig = {
   apiKey: 'AIzaSyC4G60_txjH8eXltnRwdts-hktyLVXWiHY',
@@ -26,4 +29,21 @@ const firebaseApp = initializeApp(firebaseConfig);
 // Config for Firebase Authentication.
 const auth = getAuth();
 
-export { firebaseApp, auth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, onAuthStateChanged, signOut };
+// Config for Firebase Firestore.
+const firestore = getFirestore();
+
+export {
+  firebaseApp,
+  auth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+  firestore,
+  addDoc,
+  collection,
+  doc,
+  getDocs,
+  updateDoc,
+};
