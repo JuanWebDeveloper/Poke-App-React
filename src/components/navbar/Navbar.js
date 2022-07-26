@@ -44,8 +44,13 @@ export const Navbar = ({ children }) => {
             </NavLink>
           )}
           {isAuthenticated && (
+            <NavLink className='navbar-menu_item' to='/dashboard/search'>
+              Buscar
+            </NavLink>
+          )}
+          {isAuthenticated && (
             <NavLink className='navbar-menu_item' to='/dashboard/favorites'>
-              Mis Favoritos
+              Favoritos
             </NavLink>
           )}
           {isAuthenticated && (

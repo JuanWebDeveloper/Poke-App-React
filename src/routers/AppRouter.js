@@ -5,6 +5,7 @@ import { auth, onAuthStateChanged } from '../firebase/firebaseConfig';
 
 // Actions.
 import { initiateAuth } from '../actions/auth';
+import { getPokemons } from '../actions/pokemons';
 
 // Routers Of The Application.
 import { PrivateRouter } from './PrivateRouter';
@@ -28,6 +29,7 @@ export const AppRouter = () => {
       onAuthStateChanged(auth, (user) => {
         if (user) {
           dispatch(initiateAuth(user.uid, user.displayName));
+          dispatch(getPokemons());
           setSessionIsActive(true);
         } else {
           setSessionIsActive(false);
