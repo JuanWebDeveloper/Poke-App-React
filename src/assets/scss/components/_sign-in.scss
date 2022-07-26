@@ -16,5 +16,13 @@
     top: 50%;
     transform: translate(-50%, -50%);
     width: 45%;
+
+    @media (max-width: 48rem) {
+      width: 70%;
+    }
+
+    @media (max-width: 30rem) {
+      width: 90%;
+    }
   }
 }
