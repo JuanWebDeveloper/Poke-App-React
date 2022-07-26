@@ -17,4 +17,5 @@ export const types = {
   getPokemonByName: '[Pokemons] Get Pokemon By Name',
   getFavoritePokemons: '[Pokemons] Get Favorite Pokemons',
   addPokemonToFavorites: '[Pokemons] Add Pokemon To Favorites',
+  removePokemonFromFavorites: '[Pokemons] Remove Pokemon From Favorites',
 };

@@ -1,4 +1,4 @@
-import { addDoc, collection, firestore, getDocs } from '../firebase/firebaseConfig';
+import { addDoc, collection, deleteDoc, doc, firestore, getDocs } from '../firebase/firebaseConfig';
 
 import { types } from '../types/types';
 import { startLoading, stopLoading } from './ui';
@@ -52,12 +52,7 @@ export const getPokemonDetails = (id) => {
           name: data.name,
           image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.id}.png`,
           moves: data.moves.map((move) => move.move.name),
-          stats: data.stats.map((stat) => {
-            return {
-              name: stat.stat.name,
-              value: stat.base_stat,
-            };
-          }),
+          stats: data.stats.map((stat) => ({ name: stat.stat.name, value: stat.base_stat })),
           specie: data.species.name,
           types: data.types.map((type) => type.type.name),
         };
@@ -138,6 +133,26 @@ export const addPokemonToFavoritesAction = (pokemon) => {
     const docRef = await addDoc(collection(firestore, `${uid}/pokemons/favorites`), pokemon);
 
     dispatch(addPokemonToFavorites({ docId: docRef.id, ...pokemon }));
+    dispatch(stopLoading());
+  };
+};
+
+// Action To Remove Pokemon From Favorites.
+const removePokemonFromFavorites = (docId) => ({
+  type: types.removePokemonFromFavorites,
+  payload: docId,
+});
+
+export const removePokemonFromFavoritesAction = (id) => {
+  return async (dispatch, getState) => {
+    dispatch(startLoading());
+    const { uid } = getState().auth;
+    const { favorites } = getState().pokemons;
+    const docId = favorites.find((pokemon) => pokemon.id === id).docId;
+
+    await deleteDoc(doc(firestore, `${uid}/pokemons/favorites`, docId));
+
+    dispatch(removePokemonFromFavorites(docId));
     dispatch(stopLoading());
   };
 };

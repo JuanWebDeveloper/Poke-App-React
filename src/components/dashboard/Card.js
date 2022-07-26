@@ -1,24 +1,21 @@
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { addPokemonToFavoritesAction } from '../../actions/pokemons';
+import { addPokemonToFavoritesAction, removePokemonFromFavoritesAction } from '../../actions/pokemons';
 
 export const Card = ({ id, name, image }) => {
   const dispatch = useDispatch();
   const { favorites } = useSelector(({ pokemons }) => pokemons);
   const isFavorite = favorites.find((pokemon) => pokemon.id === id);
 
-  const addPokemonToFavorites = () => {
-    const pokemon = { id, name, image };
-
-    dispatch(addPokemonToFavoritesAction(pokemon));
-  };
+  const addPokemonToFavorites = () => dispatch(addPokemonToFavoritesAction({ id, name, image }));
+  const removePokemonFromFavorites = () => dispatch(removePokemonFromFavoritesAction(id));
 
   return (
     <div className='card'>
       <div className='card-content'>
         {isFavorite ? (
-          <button className='btn-rf'>
+          <button className='btn-rf' onClick={removePokemonFromFavorites}>
             <i className='fa-solid fa-star'></i>
           </button>
         ) : (
