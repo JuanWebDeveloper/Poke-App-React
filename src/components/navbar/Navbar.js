@@ -35,6 +35,7 @@ export const Navbar = ({ children }) => {
   const handleSignOut = () => {
     dispatch(signOUT());
     dispatch(cleanUpPokemons());
+    showAndHideNavbar();
   };
 
   return (
@@ -52,32 +53,32 @@ export const Navbar = ({ children }) => {
 
         <div className='navbar-menu' id='navigation'>
           {!isAuthenticated && (
-            <NavLink className='navbar-menu_item' to='/auth/sign-in'>
+            <NavLink className='navbar-menu_item' to='/auth/sign-in' onClick={showAndHideNavbar}>
               Iniciar Sesión
             </NavLink>
           )}
           {!isAuthenticated && (
-            <NavLink className='navbar-menu_item' to='/auth/sign-up'>
+            <NavLink className='navbar-menu_item' to='/auth/sign-up' onClick={showAndHideNavbar}>
               Registrarse
             </NavLink>
           )}
           {isAuthenticated && (
-            <NavLink className='navbar-menu_item' to='/dashboard/'>
+            <NavLink className='navbar-menu_item' to='/dashboard/' onClick={showAndHideNavbar}>
               Inicio
             </NavLink>
           )}
           {isAuthenticated && (
-            <NavLink className='navbar-menu_item' to='/dashboard/pokemons'>
+            <NavLink className='navbar-menu_item' to='/dashboard/pokemons' onClick={showAndHideNavbar}>
               Pokemons
             </NavLink>
           )}
           {isAuthenticated && (
-            <NavLink className='navbar-menu_item' to='/dashboard/search'>
+            <NavLink className='navbar-menu_item' to='/dashboard/search' onClick={showAndHideNavbar}>
               Buscar
             </NavLink>
           )}
           {isAuthenticated && (
-            <NavLink className='navbar-menu_item' to='/dashboard/favorites'>
+            <NavLink className='navbar-menu_item' to='/dashboard/favorites' onClick={showAndHideNavbar}>
               Favoritos
             </NavLink>
           )}
