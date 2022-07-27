@@ -13,7 +13,7 @@ export const PokemonDetails = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    return () => dispatch(getPokemonDetails(id));
+    dispatch(getPokemonDetails(id));
   }, [dispatch, id]);
 
   return (

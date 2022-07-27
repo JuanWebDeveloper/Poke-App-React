@@ -24,18 +24,17 @@ export const AppRouter = () => {
   const [sessionVerification, setSessionVerification] = useState(true);
 
   useEffect(() => {
-    return () =>
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-          dispatch(initiateAuth(user.uid, user.displayName));
-          dispatch(getPokemons()).then(() => dispatch(getFavoritePokemons()));
-          setSessionIsActive(true);
-        } else {
-          setSessionIsActive(false);
-        }
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        dispatch(initiateAuth(user.uid, user.displayName));
+        dispatch(getPokemons()).then(() => dispatch(getFavoritePokemons()));
+        setSessionIsActive(true);
+      } else {
+        setSessionIsActive(false);
+      }
 
-        setSessionVerification(false);
-      });
+      setSessionVerification(false);
+    });
   }, [dispatch]);
 
   if (sessionVerification) {
